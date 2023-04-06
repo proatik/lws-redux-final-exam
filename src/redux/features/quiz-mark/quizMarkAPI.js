@@ -40,6 +40,17 @@ const quizMarkAPI = apiSlice.injectEndpoints({
               }
             )
           );
+
+          // pessimistic cache update.
+          dispatch(
+            apiSlice.util.updateQueryData(
+              "getQuizMarks",
+              undefined,
+              (draft) => {
+                draft.push(createdQuizMark);
+              }
+            )
+          );
         } catch (error) {}
       },
     }),

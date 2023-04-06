@@ -40,6 +40,16 @@ const assignmentMarksAPI = apiSlice.injectEndpoints({
               }
             )
           );
+
+          dispatch(
+            apiSlice.util.updateQueryData(
+              "getAssignmentMarks",
+              undefined,
+              (draft) => {
+                draft.push(createdAssignmentMark);
+              }
+            )
+          );
         } catch (error) {}
       },
     }),
